@@ -311,41 +311,7 @@
             margin-right: 5px;
         }
 
-        .lang-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: white;
-            border: 2px solid #3b82f6;
-            border-radius: 25px;
-            padding: 8px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #1e40af;
-            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .lang-toggle:hover {
-            background: #3b82f6;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-
-        .lang-toggle::before {
-            content: "🌐 ";
-            font-size: 1.2em;
-        }
-
         @media print {
-            .lang-toggle {
-                display: none !important;
-            }
             /* Hide interactive elements */
             .download-btn {
                 display: none !important;
@@ -662,45 +628,41 @@
     </style>
 </head>
 <body>
-    <button class="lang-toggle" onclick="toggleLanguage()">
-        <span id="lang-text">ไทย</span>
-    </button>
-    
     <div class="container">
         <div class="header">
-            <h1 data-lang-key="h1-title">🚀 Social Media Analytics Data Pipeline</h1>
-            <p data-lang-key="h1-subtitle">End-to-End ETL with PostgreSQL & Meta Graph API</p>
-            <p style="margin-top: 10px; font-size: 1em;" data-lang-key="h1-author">SQL Portfolio by Laminta (Spy)</p>
-            <button class="download-btn" onclick="downloadPDF()" data-lang-key="download-btn">Download as PDF</button>
+            <h1>🚀 Social Media Analytics Data Pipeline</h1>
+            <p>End-to-End ETL with PostgreSQL & Meta Graph API</p>
+            <p style="margin-top: 10px; font-size: 1em;">SQL Portfolio by Laminta (Spy)</p>
+            <button class="download-btn" onclick="downloadPDF()">Download as PDF</button>
         </div>
 
         <div class="content">
             <!-- Section 1: Project Overview & Architecture -->
             <section class="section">
-                <h2 class="section-title" data-lang-key="s1-title">📊 1. Project Overview & Architecture</h2>
+                <h2 class="section-title">📊 1. Project Overview & Architecture</h2>
                 
-                <p style="font-size: 1.1em; margin-bottom: 20px;" data-lang-key="s1-intro">
+                <p style="font-size: 1.1em; margin-bottom: 20px;">
                     Automated social media analytics system that extracts data from Meta platforms (Facebook & Instagram),
                     stores it in PostgreSQL (Supabase), and provides real-time insights through interactive dashboards.
                 </p>
 
-                <h3 class="subsection-title" data-lang-key="tech-stack-title">🛠️ Tech Stack</h3>
+                <h3 class="subsection-title">🛠️ Tech Stack</h3>
                 <div class="tech-stack">
                     <div class="tech-item">
-                        <h3 data-lang-key="tech1-title">Data Extraction</h3>
-                        <p data-lang-key="tech1-desc">Node.js + Meta Graph API v19.0</p>
+                        <h3>Data Extraction</h3>
+                        <p>Node.js + Meta Graph API v19.0</p>
                     </div>
                     <div class="tech-item">
-                        <h3 data-lang-key="tech2-title">Data Warehouse</h3>
-                        <p data-lang-key="tech2-desc">PostgreSQL (Supabase)</p>
+                        <h3>Data Warehouse</h3>
+                        <p>PostgreSQL (Supabase)</p>
                     </div>
                     <div class="tech-item">
-                        <h3 data-lang-key="tech3-title">Automation</h3>
-                        <p data-lang-key="tech3-desc">GitHub Actions (Scheduled Workflows)</p>
+                        <h3>Automation</h3>
+                        <p>GitHub Actions (Scheduled Workflows)</p>
                     </div>
                     <div class="tech-item">
-                        <h3 data-lang-key="tech4-title">Visualization</h3>
-                        <p data-lang-key="tech4-desc">Chart.js + Custom Dashboard</p>
+                        <h3>Visualization</h3>
+                        <p>Chart.js + Custom Dashboard</p>
                     </div>
                 </div>
 
@@ -1427,159 +1389,6 @@ ORDER BY total_followers DESC;</code></pre>
     </div>
 
     <script>
-        // Language Toggle
-        let currentLang = 'en';
-        
-        const translations = {
-            th: {
-                 // Header
-                'h1-title': '🚀 ระบบวิเคราะห์ Social Media แบบ End-to-End',
-                'h1-subtitle': 'ETL Pipeline ด้วย PostgreSQL & Meta Graph API',
-                'h1-author': 'SQL Portfolio โดย Laminta (Spy)',
-                'download-btn': 'ดาวน์โหลดเป็น PDF',
-                
-                // Section 1
-                's1-title': '📊 1. ภาพรวมโครงการ & สถาปัตยกรรม',
-                's1-intro': 'ระบบวิเคราะห์ social media อัตโนมัติ ที่ดึงข้อมูลจาก Meta platforms (Facebook & Instagram) เก็บข้อมูลใน PostgreSQL (Supabase) และนำเสนอข้อมูลเชิงลึกแบบเรียลไทม์ผ่าน interactive dashboards',
-                'tech-stack-title': '🛠️ เทคโนโลยีที่ใช้',
-                'tech1-title': 'การดึงข้อมูล',
-                'tech1-desc': 'Node.js + Meta Graph API v19.0',
-                'tech2-title': 'คลังข้อมูล',
-                'tech2-desc': 'PostgreSQL (Supabase)',
-                'tech3-title': 'ระบบอัตโนมัติ',
-                'tech3-desc': 'GitHub Actions (Scheduled Workflows)',
-                'tech4-title': 'การแสดงผล',
-                'tech4-desc': 'Chart.js + Custom Dashboard',
-                'arch-title': '🏗️ สถาปัตยกรรมระบบ',
-                'pipeline-title': '📂 ส่วนประกอบ ETL Pipeline',
-                'table-script': 'Script',
-                'table-purpose': 'วัตถุประสงค์',
-                'table-api': 'API Endpoints',
-                'table-freq': 'ความถี่',
-                'script1-purpose': 'ข้อมูลรายวันของบัญชี & demographics',
-                'script2-purpose': 'ข้อมูล performance ระดับโพสต์',
-                'script3-purpose': 'ข้อมูล performance แคมเปญโฆษณาและ ROI',
-                'freq-daily': 'รายวัน (Cron)',
-                
-                // Section 2
-                's2-title': '🗄️ 2. การออกแบบฐานข้อมูล (ERD)',
-                's2-key-tables': '📋 ตารางหลัก & ความสัมพันธ์',
-                'table-name': 'ตาราง',
-                'column': 'คอลัมน์',
-                'type': 'ชนิดข้อมูล',
-                'description': 'คำอธิบาย',
-                'indexing': 'การทำ Index',
-                'design-rationale-title': 'เหตุผลในการออกแบบ:',
-                'design-rationale': 'Schema นี้ใช้รูปแบบ star schema โดยมี social_accounts เป็นตารางมิติหลัก Daily snapshots ช่วยให้วิเคราะห์แบบ time-series ได้ ในขณะที่ตาราง posts และ ads แยกออกมาช่วยให้ติดตาม performance ได้ละเอียด คอลัมน์ JSON เก็บข้อมูล demographic แบบยืดหยุ่น',
-                
-                // Section 3
-                's3-title': '📈 3. SQL Skill Showcase - การวิเคราะห์ Time Series',
-                's3-q1-title': 'การวิเคราะห์ Growth Trend (Moving Average 7 วัน)',
-                's3-q1-business': 'คำถามทางธุรกิจ:',
-                's3-q1-question': 'จำนวนผู้ติดตามของเรามีแนวโน้มเพิ่มขึ้นอย่างไร และการปรับค่าให้เรียบเพื่อลดความผันผวนรายวัน?',
-                's3-q1-techniques': '💡 เทคนิค SQL ที่ใช้:',
-                's3-q1-tech-desc': 'Window functions (LAG, AVG OVER, FIRST_VALUE), partitioning, moving averages, percentage calculations',
-                's3-q1-why': '🎯 ทำไมนี่ถึงสำคัญ?',
-                's3-q1-why-desc': 'Moving averages ตัดเสียงรบกวนจากข้อมูลรายวัน ช่วยให้ผู้บริหารเห็นแนวโน้มการเติบโตที่แท้จริงเร็วขึ้น 2-3 สัปดาห์ ช่วยปรับกลยุทธ์ล่วงหน้าก่อนคู่แข่งจะสังเกตเห็นการเปลี่ยนแปลงของตลาด ป้องกันการตอบสนองแบบตื่นตระหนกต่อการลดลงเพียงวันเดียว',
-                
-                's3-q2-title': 'การเปรียบเทียบ Performance แบบ Week-over-Week',
-                's3-q2-question': 'บัญชีไหนมี engagement เพิ่มขึ้นมากที่สุดเมื่อเทียบแบบสัปดาห์ต่อสัปดาห์?',
-                's3-q2-techniques': '💡 เทคนิค SQL ที่ใช้:',
-                's3-q2-tech-desc': 'DATE_TRUNC สำหรับจัดกลุ่มเวลา, LAG สำหรับเปรียบเทียบลำดับ, CTEs เพื่อความอ่านง่าย',
-                's3-q2-why': '🎯 ทำไมนี่ถึงสำคัญ?',
-                's3-q2-why-desc': 'ภาพรวมรายสัปดาห์แสดง momentum ของ performance—บัญชีที่เติบโตจะได้งบประมาณเพิ่ม บัญชีที่ลดลงจะถูกตรวจสอบ ทีม Marketing สามารถตอบสนองภายใน 7 วัน แทนที่จะรอรายงานสิ้นเดือน WoW changes ทำนายเป้าหมายรายไตรมาสได้แม่นยำ 85%',
-                
-                's3-q3-title': 'Cohort Analysis - การรักษาผู้ติดตาม',
-                's3-q3-techniques': '💡 เทคนิคขั้นสูง:',
-                's3-q3-tech-desc': 'Cohort analysis ด้วย CTEs, การจัดการวันที่ (DATE_TRUNC, AGE) และการรวมข้อมูลเพื่อติดตาม performance ของบัญชีตลอดเวลา',
-                's3-q3-why': '🎯 ทำไมนี่ถึงสำคัญ?',
-                's3-q3-why-desc': 'ระบุว่า cohort ของบัญชีแบบไหนมี performance ดีที่สุด (เช่น บัญชีที่เปิดใน Q1 เติบโต 40% เร็วกว่า) ช่วยในการวางแผนเวลาเปิดตัวตลาดใหม่ และยืนยันว่าบัญชีเก่าๆ หยุดนิ่งตามธรรมชาติหรือไม่ พิสูจน์ให้ผู้บริหารเห็นว่าการเติบโตมีความยั่งยืน ไม่ใช่แค่ชั่วคราว',
-                
-                // Section 4
-                's4-title': '💰 4. SQL Skill Showcase - การวิเคราะห์ Performance & ROI',
-                's4-q1-title': 'ROI แคมเปญโฆษณา & ประสิทธิภาพต้นทุน',
-                's4-q1-question': 'แคมเปญโฆษณาไหนให้ ROI ดีที่สุด และมีต้นทุนต่อ engagement ต่ำสุด?',
-                's4-q1-impact': '💡 ผลกระทบทางธุรกิจ:',
-                's4-q1-impact-desc': 'Query นี้ระบุแคมเปญที่มี performance ดีที่สุด ช่วยจัดสรรงบประมาณใหม่เพื่อเพิ่ม ROI สูงสุด แคมเปญที่มี ROI > 200% ควรขยายขนาด ส่วนแคมเปญ ROI ติดลบต้องปรับปรุงหรือหยุด',
-                's4-q1-why': '🎯 ทำไมนี่ถึงสำคัญ?',
-                's4-q1-why-desc': 'ประหยัดค่าใช้จ่ายทันที: ทีม Marketing หยุดแคมเปญที่ขาดทุน 5 แคมเปญแบบเรียลไทม์ ประหยัด $8,500/เดือน ตัวชี้วัด CPM และ cost-per-conversion เปิดเผยตำแหน่งโฆษณาที่ไม่มีประสิทธิภาพ หยุดแคมเปญที่ต่ำกว่าจุดคุ้มทุนอัตโนมัติก่อนเผาเงิน',
-                
-                's4-q2-title': 'การวิเคราะห์ Content Performance - โพสต์ที่มี Performance ดีสุด',
-                's4-q2-techniques': '💡 เทคนิค SQL ที่ใช้:',
-                's4-q2-tech-desc': 'สูตรคะแนนแบบถ่วงน้ำหนัก, PERCENT_RANK สำหรับ benchmarking, ROW_NUMBER สำหรับเลือก top-N',
-                's4-q2-why': '🎯 ทำไมนี่ถึงสำคัญ?',
-                's4-q2-why-desc': 'ทีมคอนเทนต์ลอกแบบรูปแบบที่ viral จากโพสต์ยอดนิยม (เช่น Reels ที่มี saves > comments = engagement สูงกว่า 3 เท่า) Virality score ทำนายโพสต์ organic ไหนควรได้ budget โฆษณา ระบุ creators ที่ดีที่สุดสำหรับความร่วมมือ influencer',
-                
-                's4-q3-title': 'Platform Comparison Dashboard Query',
-                's4-q3-insight': '💡 Strategic Insight:',
-                's4-q3-insight-desc': 'การวิเคราะห์นี้เปิดเผยว่า platform ไหนให้ organic reach vs. paid performance ดีกว่า ช่วยตัดสินใจจัดสรรงบประมาณ เช่น ถ้า Instagram มี engagement rate สูงกว่า 2 เท่า แต่ conversion ต่ำกว่า ควรใช้สำหรับ brand awareness ส่วน Facebook เน้น conversions',
-                's4-q3-why': '🎯 ทำไมนี่ถึงสำคัญ?',
-                's4-q3-why-desc': 'การปรับงบประมาณให้เหมาะสม: ค้นพบว่า Instagram ให้ engagement สูงกว่า 2.5 เท่า ที่ค่าโฆษณาต่ำกว่า 40% จึงย้ายงบ $15K/เดือนจาก Facebook พิสูจน์ว่าการเลือก platform แบบ data-driven ดีกว่าการคิดว่า "ผู้ชมอยู่ตรงไหน" ผู้บริหารระดับสูงต้องการข้อมูลนี้ทุกไตรมาสสำหรับวางแผนกลยุทธ์',
-                
-                // Section 5
-                's5-title': '📊 5. Data Visualization & Impact',
-                's5-metrics-title': 'ตัวชี้วัดหลัก (ข้อมูลตัวอย่าง)',
-                'metric1-label': 'Reach รวม (90 วัน)',
-                'metric2-label': 'Engagement รวม',
-                'metric3-label': 'ROI แคมเปญเฉลี่ย',
-                'metric4-label': 'โพสต์ที่วิเคราะห์',
-                
-                's5-chart1': 'กราฟ Reach รายวัน (30 วันล่าสุด)',
-                's5-chart2': 'Ad Performance: ค่าใช้จ่าย vs ROI',
-                's5-chart3': 'เปรียบเทียบ Platform - Engagement Rates',
-                
-                's5-impact-title': '🎯 ผลกระทบทางธุรกิจ & ผลลัพธ์',
-                'impact1': 'การรวบรวมข้อมูลรายวันอัตโนมัติ: ลดการป้อนข้อมูลด้วยมือ 100% ประหยัดเวลา 10+ ชั่วโมง/สัปดาห์',
-                'impact2': 'การติดตาม Performance แบบเรียลไทม์: ตอบสนองแคมเปญที่มี performance ต่ำได้ทันที',
-                'impact3': 'การตัดสินใจโดย ROI เป็นหลัก: พบแคมเปญที่มี ROI 510% จัดสรรงบประมาณใหม่เพิ่ม 3 เท่า',
-                'impact4': 'ข้อมูลเชิงลึกข้าม Platform: พบว่า Instagram ให้ engagement สูงกว่า 2.5 เท่า สำหรับ video content',
-                'impact5': 'การวิเคราะห์แนวโน้มแบบทำนาย: Moving average 7 วันเผยแนวโน้มการเติบโตล่วงหน้า 2 สัปดาห์',
-                'impact6': 'การปรับต้นทุนให้เหมาะสม: ลดต้นทุนต่อ engagement 40% ผ่านการปรับโฆษณาแบบ data-driven',
-                
-                's5-skills-title': '🔧 ทักษะทางเทคนิคที่แสดง',
-                'skill-cat': 'หมวดทักษะ',
-                'skill-tech': 'เทคโนโลยี/เทคนิค',
-                'skill1-cat': 'SQL Advanced Queries',
-                'skill1-tech': 'Window Functions, CTEs, Subqueries, JSONB Operations, Date Manipulation',
-                'skill2-cat': 'Database Design',
-                'skill2-tech': 'ERD Design, Indexing Strategy, Foreign Keys, Normalization',
-                'skill3-cat': 'ETL Development',
-                'skill3-tech': 'Node.js, REST API Integration, Error Handling, Data Transformation',
-                'skill4-cat': 'Data Analysis',
-                'skill4-tech': 'Time Series Analysis, Cohort Analysis, ROI Calculation, Statistical Metrics',
-                'skill5-cat': 'Automation',
-                'skill5-tech': 'Cron Jobs, Scheduled Tasks, Retry Logic, Rate Limiting',
-                'skill6-cat': 'Visualization',
-                'skill6-tech': 'Chart.js, HTML/CSS, Dashboard Design, Data Storytelling',
-                
-                'contact-title': '📫 ข้อมูลติดต่อ:',
-                'project-repo': '🔗 Project Repository:',
-                
-                'lang-button': 'English'
-            }
-        };
-        
-        function toggleLanguage() {
-            const elements = document.querySelectorAll('[data-lang-key]');
-            const langButton = document.getElementById('lang-text');
-            
-            if (currentLang === 'en') {
-                currentLang = 'th';
-                langButton.textContent = 'English';
-                
-                elements.forEach(el => {
-                    const key = el.getAttribute('data-lang-key');
-                    if (translations.th[key]) {
-                        el.textContent = translations.th[key];
-                    }
-                });
-            } else {
-                currentLang = 'en';
-                langButton.textContent = 'ไทย';
-                window.location.reload(); // Reload to restore original English content
-            }
-        }
-
         // Download PDF Function
         function downloadPDF() {
             // Show print dialog with tips

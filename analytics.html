@@ -40,15 +40,25 @@
         .demo-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px 30px;
+            padding: 20px 30px;
             text-align: center;
             margin: -20px -20px 20px -20px;
-            font-weight: 600;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .demo-banner i {
-            margin-right: 10px;
+        .demo-banner-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-banner-subtitle {
+            font-size: 0.9em;
+            font-weight: 400;
+            opacity: 0.95;
         }
 
         .container {
@@ -247,8 +257,8 @@
 </head>
 <body>
     <div class="demo-banner">
-        <i class="fas fa-info-circle"></i>
-        DEMO VERSION - Mock Data for Portfolio Demonstration
+        <span class="demo-banner-title">⚠️ DEMO VERSION - Mock Data for Portfolio Demonstration</span>
+        <span class="demo-banner-subtitle">This is mock data. The live website can be demonstrated during the interview.</span>
     </div>
 
     <div class="container">

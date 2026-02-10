@@ -312,6 +312,7 @@
         }
 
         .lang-toggle {
+            display: none !important;
             position: fixed;
             top: 20px;
             right: 20px;
@@ -325,7 +326,6 @@
             color: #1e40af;
             box-shadow: 0 2px 10px rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
-            display: flex;
             align-items: center;
             gap: 8px;
         }
@@ -704,7 +704,7 @@
                     </div>
                 </div>
 
-                <h3 class="subsection-title">🏗️ System Architecture</h3>
+                <h3 class="subsection-title" data-lang-key="arch-title">🏗️ System Architecture</h3>
                 <div class="diagram-container">
                     <div class="mermaid">
 graph LR
@@ -729,35 +729,35 @@ graph LR
                     </div>
                 </div>
 
-                <h3 class="subsection-title">📂 ETL Pipeline Components</h3>
+                <h3 class="subsection-title" data-lang-key="pipeline-title">📂 ETL Pipeline Components</h3>
                 <div class="table-schema">
                     <table>
                         <thead>
                             <tr>
-                                <th>Script</th>
-                                <th>Purpose</th>
-                                <th>API Endpoints</th>
-                                <th>Frequency</th>
+                                <th data-lang-key="table-script">Script</th>
+                                <th data-lang-key="table-purpose">Purpose</th>
+                                <th data-lang-key="table-api">API Endpoints</th>
+                                <th data-lang-key="table-freq">Frequency</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>update_metrics.js</strong></td>
-                                <td>Daily account metrics & demographics</td>
+                                <td data-lang-key="script1-purpose">Daily account metrics & demographics</td>
                                 <td>/insights, /engaged_audience_demographics</td>
-                                <td>Daily (Cron)</td>
+                                <td data-lang-key="freq-daily">Daily (Cron)</td>
                             </tr>
                             <tr>
                                 <td><strong>update_posts.js</strong></td>
-                                <td>Post-level performance data</td>
+                                <td data-lang-key="script2-purpose">Post-level performance data</td>
                                 <td>/posts, /insights, /media</td>
-                                <td>Daily (Cron)</td>
+                                <td data-lang-key="freq-daily">Daily (Cron)</td>
                             </tr>
                             <tr>
                                 <td><strong>update_boostedpost.js</strong></td>
-                                <td>Paid campaign performance & ROI</td>
+                                <td data-lang-key="script3-purpose">Paid campaign performance & ROI</td>
                                 <td>/ads, /insights, /adcreatives</td>
-                                <td>Daily (Cron)</td>
+                                <td data-lang-key="freq-daily">Daily (Cron)</td>
                             </tr>
                         </tbody>
                     </table>
@@ -766,7 +766,7 @@ graph LR
 
             <!-- Section 2: Database Design -->
             <section class="section">
-                <h2 class="section-title">🗄️ 2. Database Design (ERD)</h2>
+                <h2 class="section-title" data-lang-key="s2-title">🗄️ 2. Database Design (ERD)</h2>
 
                 <div class="diagram-container">
                     <div class="mermaid">
@@ -844,7 +844,7 @@ erDiagram
                     </div>
                 </div>
 
-                <h3 class="subsection-title">📋 Key Tables & Relationships</h3>
+                <h3 class="subsection-title" data-lang-key="s2-key-tables">📋 Key Tables & Relationships</h3>
                 
                 <div class="table-schema">
                     <h4 style="margin-bottom: 10px;">Table: social_accounts</h4>
@@ -939,19 +939,19 @@ erDiagram
                 </div>
 
                 <div class="code-description">
-                    <strong>Design Rationale:</strong> The schema follows a star schema pattern with social_accounts as the central dimension table.
+                    <strong data-lang-key="design-rationale-title">Design Rationale:</strong> <span data-lang-key="design-rationale">The schema follows a star schema pattern with social_accounts as the central dimension table.
                     Daily snapshots enable time-series analysis, while the separate posts and ad tables allow for granular performance tracking.
-                    JSON columns store complex demographic data for flexible querying.
+                    JSON columns store complex demographic data for flexible querying.</span>
                 </div>
             </section>
 
             <!-- Section 3: SQL Showcase - Time Series -->
             <section class="section">
-                <h2 class="section-title">📈 3. SQL Skill Showcase - Time Series Analysis</h2>
+                <h2 class="section-title" data-lang-key="s3-title">📈 3. SQL Skill Showcase - Time Series Analysis</h2>
 
-                <h3 class="subsection-title">Growth Trend Analysis (7-Day Moving Average)</h3>
+                <h3 class="subsection-title" data-lang-key="s3-q1-title">Growth Trend Analysis (7-Day Moving Average)</h3>
                 <div class="code-description">
-                    <strong>Business Question:</strong> How is our follower growth trending over time, smoothed to reduce daily volatility?
+                    <strong data-lang-key="s3-q1-business">Business Question:</strong> <span data-lang-key="s3-q1-question">How is our follower growth trending over time, smoothed to reduce daily volatility?</span>
                 </div>
 
                 <div class="sql-code">
@@ -995,16 +995,16 @@ ORDER BY account_id, date DESC;</code></pre>
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Key SQL Techniques:</strong> Window functions (LAG, AVG OVER, FIRST_VALUE), partitioning, moving averages, percentage calculations
+                    <strong data-lang-key="s3-q1-techniques">💡 Key SQL Techniques:</strong> <span data-lang-key="s3-q1-tech-desc">Window functions (LAG, AVG OVER, FIRST_VALUE), partitioning, moving averages, percentage calculations</span>
                 </div>
 
                 <div class="code-description">
-                    <strong>🎯 Why this matters?</strong> Moving averages eliminate daily noise spikes, helping executives spot true growth trends 2-3 weeks earlier. This enables proactive strategy adjustments before competitors notice market shifts. Prevents panic reactions to single-day drops.
+                    <strong data-lang-key="s3-q1-why">🎯 Why this matters?</strong> <span data-lang-key="s3-q1-why-desc">Moving averages eliminate daily noise spikes, helping executives spot true growth trends 2-3 weeks earlier. This enables proactive strategy adjustments before competitors notice market shifts. Prevents panic reactions to single-day drops.</span>
                 </div>
 
-                <h3 class="subsection-title">Week-over-Week Performance Comparison</h3>
+                <h3 class="subsection-title" data-lang-key="s3-q2-title">Week-over-Week Performance Comparison</h3>
                 <div class="code-description">
-                    <strong>Business Question:</strong> Which accounts show the strongest week-over-week engagement improvements?
+                    <strong data-lang-key="s3-q1-business">Business Question:</strong> <span data-lang-key="s3-q2-question">Which accounts show the strongest week-over-week engagement improvements?</span>
                 </div>
 
                 <div class="sql-code">
@@ -1058,14 +1058,14 @@ LIMIT 20;</code></pre>
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Key SQL Techniques:</strong> DATE_TRUNC for time grouping, LAG for sequential comparison, CTEs for code readability
+                    <strong data-lang-key="s3-q2-techniques">💡 Key SQL Techniques:</strong> <span data-lang-key="s3-q2-tech-desc">DATE_TRUNC for time grouping, LAG for sequential comparison, CTEs for code readability</span>
                 </div>
 
                 <div class="code-description">
-                    <strong>🎯 Why this matters?</strong> Weekly snapshots reveal performance momentum—surging accounts get more budget, declining ones get reviewed. Marketing teams can react within 7 days instead of waiting for month-end reports. WoW changes predict quarterly targets with 85% accuracy.
+                    <strong data-lang-key="s3-q2-why">🎯 Why this matters?</strong> <span data-lang-key="s3-q2-why-desc">Weekly snapshots reveal performance momentum—surging accounts get more budget, declining ones get reviewed. Marketing teams can react within 7 days instead of waiting for month-end reports. WoW changes predict quarterly targets with 85% accuracy.</span>
                 </div>
 
-                <h3 class="subsection-title">Cohort Analysis - Follower Retention</h3>
+                <h3 class="subsection-title" data-lang-key="s3-q3-title">Cohort Analysis - Follower Retention</h3>
                 <div class="sql-code">
                     <pre><code class="language-sql">-- Analyze follower retention by cohort (month joined)
 WITH follower_cohorts AS (
@@ -1104,22 +1104,22 @@ ORDER BY cohort_month, activity_month;</code></pre>
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Advanced Technique:</strong> Cohort analysis using CTEs, date manipulation (DATE_TRUNC, AGE), 
-                    and aggregations to track account performance over time since initial tracking began.
+                    <strong data-lang-key="s3-q3-techniques">💡 Advanced Technique:</strong> <span data-lang-key="s3-q3-tech-desc">Cohort analysis using CTEs, date manipulation (DATE_TRUNC, AGE), 
+                    and aggregations to track account performance over time since initial tracking began.</span>
                 </div>
 
                 <div class="code-description">
-                    <strong>🎯 Why this matters?</strong> Identifies which account vintage performs best (e.g., accounts launched in Q1 grow 40% faster). Guides launch timing for new markets and validates if older accounts naturally plateau. Proves to executives that growth is sustainable, not a temporary spike.
+                    <strong data-lang-key="s3-q3-why">🎯 Why this matters?</strong> <span data-lang-key="s3-q3-why-desc">Identifies which account vintage performs best (e.g., accounts launched in Q1 grow 40% faster). Guides launch timing for new markets and validates if older accounts naturally plateau. Proves to executives that growth is sustainable, not a temporary spike.</span>
                 </div>
             </section>
 
             <!-- Section 4: SQL Showcase - Performance & ROI -->
             <section class="section">
-                <h2 class="section-title">💰 4. SQL Skill Showcase - Performance & ROI Analysis</h2>
+                <h2 class="section-title" data-lang-key="s4-title">💰 4. SQL Skill Showcase - Performance & ROI Analysis</h2>
 
-                <h3 class="subsection-title">Ad Campaign ROI & Cost Efficiency</h3>
+                <h3 class="subsection-title" data-lang-key="s4-q1-title">Ad Campaign ROI & Cost Efficiency</h3>
                 <div class="code-description">
-                    <strong>Business Question:</strong> Which ad campaigns deliver the best ROI and lowest cost per engagement?
+                    <strong data-lang-key="s3-q1-business">Business Question:</strong> <span data-lang-key="s4-q1-question">Which ad campaigns deliver the best ROI and lowest cost per engagement?</span>
                 </div>
 
                 <div class="sql-code">
@@ -1188,15 +1188,15 @@ LIMIT 50;</code></pre>
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Business Impact:</strong> This query identifies top-performing campaigns, enabling budget reallocation
-                    to maximize ROI. Campaigns with ROI > 200% should be scaled up, while negative ROI campaigns need optimization or pausing.
+                    <strong data-lang-key="s4-q1-impact">💡 Business Impact:</strong> <span data-lang-key="s4-q1-impact-desc">This query identifies top-performing campaigns, enabling budget reallocation
+                    to maximize ROI. Campaigns with ROI > 200% should be scaled up, while negative ROI campaigns need optimization or pausing.</span>
                 </div>
 
                 <div class="code-description">
-                    <strong>🎯 Why this matters?</strong> <strong>Immediate cost savings:</strong> Marketing team killed 5 campaigns with negative ROI in real-time, saving $8,500/month. CPM and cost-per-conversion metrics expose inefficient placements. Auto-pauses campaigns below break-even threshold before burning through budget.
+                    <strong data-lang-key="s4-q1-why">🎯 Why this matters?</strong> <span data-lang-key="s4-q1-why-desc"><strong>Immediate cost savings:</strong> Marketing team killed 5 campaigns with negative ROI in real-time, saving $8,500/month. CPM and cost-per-conversion metrics expose inefficient placements. Auto-pauses campaigns below break-even threshold before burning through budget.</span>
                 </div>
 
-                <h3 class="subsection-title">Content Performance Analysis - Top Performing Posts</h3>
+                <h3 class="subsection-title" data-lang-key="s4-q2-title">Content Performance Analysis - Top Performing Posts</h3>
                 <div class="sql-code">
                     <pre><code class="language-sql">-- Identify top-performing organic content by platform
 WITH post_metrics AS (
@@ -1264,14 +1264,14 @@ ORDER BY platform, engagement_score DESC;</code></pre>
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Key SQL Techniques:</strong> Weighted scoring formula, PERCENT_RANK for benchmarking, ROW_NUMBER for top-N selection
+                    <strong data-lang-key="s4-q2-techniques">💡 Key SQL Techniques:</strong> <span data-lang-key="s4-q2-tech-desc">Weighted scoring formula, PERCENT_RANK for benchmarking, ROW_NUMBER for top-N selection</span>
                 </div>
 
                 <div class="code-description">
-                    <strong>🎯 Why this matters?</strong> Content team replicates viral patterns from top posts (e.g., Reels with saves > comments = 3x engagement). Virality score predicts which organic posts deserve paid boost. Identifies best-performing creators for influencer partnerships.
+                    <strong data-lang-key="s4-q2-why">🎯 Why this matters?</strong> <span data-lang-key="s4-q2-why-desc">Content team replicates viral patterns from top posts (e.g., Reels with saves > comments = 3x engagement). Virality score predicts which organic posts deserve paid boost. Identifies best-performing creators for influencer partnerships.</span>
                 </div>
 
-                <h3 class="subsection-title">Platform Comparison Dashboard Query</h3>
+                <h3 class="subsection-title" data-lang-key="s4-q3-title">Platform Comparison Dashboard Query</h3>
                 <div class="sql-code">
                     <pre><code class="language-sql">-- Cross-platform performance comparison
 SELECT 
@@ -1318,98 +1318,98 @@ ORDER BY total_followers DESC;</code></pre>
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Strategic Insight:</strong> This analysis reveals which platform delivers better organic reach vs. paid performance,
+                    <strong data-lang-key="s4-q3-insight">💡 Strategic Insight:</strong> <span data-lang-key="s4-q3-insight-desc">This analysis reveals which platform delivers better organic reach vs. paid performance,
                     informing budget allocation decisions. For example, if Instagram shows 2x higher engagement rate but lower conversion,
-                    it should be used for brand awareness, while Facebook focuses on conversions.
+                    it should be used for brand awareness, while Facebook focuses on conversions.</span>
                 </div>
 
                 <div class="code-description">
-                    <strong>🎯 Why this matters?</strong> <strong>Budget optimization:</strong> Discovery that Instagram delivers 2.5x engagement at 40% lower ad cost shifted $15K/month from Facebook. Proves data-driven platform selection beats "where our audience is" assumptions. C-level execs demand this quarterly for strategic planning.
+                    <strong data-lang-key="s4-q3-why">🎯 Why this matters?</strong> <span data-lang-key="s4-q3-why-desc"><strong>Budget optimization:</strong> Discovery that Instagram delivers 2.5x engagement at 40% lower ad cost shifted $15K/month from Facebook. Proves data-driven platform selection beats "where our audience is" assumptions. C-level execs demand this quarterly for strategic planning.</span>
                 </div>
             </section>
 
             <!-- Section 5: Data Visualization & Impact -->
             <section class="section">
-                <h2 class="section-title">📊 5. Data Visualization & Impact</h2>
+                <h2 class="section-title" data-lang-key="s5-title">📊 5. Data Visualization & Impact</h2>
 
-                <h3 class="subsection-title">Key Performance Metrics (Sample Data)</h3>
+                <h3 class="subsection-title" data-lang-key="s5-metrics-title">Key Performance Metrics (Sample Data)</h3>
                 <div class="metric-grid">
                     <div class="metric-card">
                         <h3>165K+</h3>
-                        <p>Total Reach (90 Days)</p>
+                        <p data-lang-key="metric1-label">Total Reach (90 Days)</p>
                     </div>
                     <div class="metric-card">
                         <h3>9,475</h3>
-                        <p>Total Engagements</p>
+                        <p data-lang-key="metric2-label">Total Engagements</p>
                     </div>
                     <div class="metric-card">
                         <h3>510%</h3>
-                        <p>Average Campaign ROI</p>
+                        <p data-lang-key="metric3-label">Average Campaign ROI</p>
                     </div>
                     <div class="metric-card">
                         <h3>3,567</h3>
-                        <p>Posts Analyzed</p>
+                        <p data-lang-key="metric4-label">Posts Analyzed</p>
                     </div>
                 </div>
 
-                <h3 class="subsection-title">Daily Reach Trend (Last 30 Days)</h3>
+                <h3 class="subsection-title" data-lang-key="s5-chart1">Daily Reach Trend (Last 30 Days)</h3>
                 <div class="chart-container">
                     <canvas id="reachChart"></canvas>
                 </div>
 
-                <h3 class="subsection-title">Ad Performance: Spend vs ROI</h3>
+                <h3 class="subsection-title" data-lang-key="s5-chart2">Ad Performance: Spend vs ROI</h3>
                 <div class="chart-container">
                     <canvas id="roiChart"></canvas>
                 </div>
 
-                <h3 class="subsection-title">Platform Comparison - Engagement Rates</h3>
+                <h3 class="subsection-title" data-lang-key="s5-chart3">Platform Comparison - Engagement Rates</h3>
                 <div class="chart-container">
                     <canvas id="platformChart"></canvas>
                 </div>
 
-                <h3 class="subsection-title">🎯 Business Impact & Results</h3>
+                <h3 class="subsection-title" data-lang-key="s5-impact-title">🎯 Business Impact & Results</h3>
                 <ul class="impact-list">
-                    <li><strong>Automated Daily Data Collection:</strong> 100% elimination of manual data entry, saving 10+ hours/week</li>
-                    <li><strong>Real-time Performance Monitoring:</strong> Enabled immediate response to underperforming campaigns</li>
-                    <li><strong>ROI-Driven Decision Making:</strong> Identified campaigns with 510% ROI, leading to 3x budget reallocation</li>
-                    <li><strong>Cross-Platform Insights:</strong> Discovered Instagram delivers 2.5x higher engagement than Facebook for video content</li>
-                    <li><strong>Predictive Trend Analysis:</strong> 7-day moving averages reveal growth patterns 2 weeks in advance</li>
-                    <li><strong>Cost Optimization:</strong> Reduced cost-per-engagement by 40% through data-driven ad optimization</li>
+                    <li data-lang-key="impact1"><strong>Automated Daily Data Collection:</strong> 100% elimination of manual data entry, saving 10+ hours/week</li>
+                    <li data-lang-key="impact2"><strong>Real-time Performance Monitoring:</strong> Enabled immediate response to underperforming campaigns</li>
+                    <li data-lang-key="impact3"><strong>ROI-Driven Decision Making:</strong> Identified campaigns with 510% ROI, leading to 3x budget reallocation</li>
+                    <li data-lang-key="impact4"><strong>Cross-Platform Insights:</strong> Discovered Instagram delivers 2.5x higher engagement than Facebook for video content</li>
+                    <li data-lang-key="impact5"><strong>Predictive Trend Analysis:</strong> 7-day moving averages reveal growth patterns 2 weeks in advance</li>
+                    <li data-lang-key="impact6"><strong>Cost Optimization:</strong> Reduced cost-per-engagement by 40% through data-driven ad optimization</li>
                 </ul>
 
-                <h3 class="subsection-title">🔧 Technical Skills Demonstrated</h3>
+                <h3 class="subsection-title" data-lang-key="s5-skills-title">🔧 Technical Skills Demonstrated</h3>
                 <div class="table-schema">
                     <table>
                         <thead>
                             <tr>
-                                <th>Skill Category</th>
-                                <th>Technologies/Techniques</th>
+                                <th data-lang-key="skill-cat">Skill Category</th>
+                                <th data-lang-key="skill-tech">Technologies/Techniques</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>SQL Advanced Queries</strong></td>
-                                <td>Window Functions, CTEs, Subqueries, JSONB Operations, Date Manipulation</td>
+                                <td><strong data-lang-key="skill1-cat">SQL Advanced Queries</strong></td>
+                                <td data-lang-key="skill1-tech">Window Functions, CTEs, Subqueries, JSONB Operations, Date Manipulation</td>
                             </tr>
                             <tr>
-                                <td><strong>Database Design</strong></td>
-                                <td>ERD Design, Indexing Strategy, Foreign Keys, Normalization</td>
+                                <td><strong data-lang-key="skill2-cat">Database Design</strong></td>
+                                <td data-lang-key="skill2-tech">ERD Design, Indexing Strategy, Foreign Keys, Normalization</td>
                             </tr>
                             <tr>
-                                <td><strong>ETL Development</strong></td>
-                                <td>Node.js, REST API Integration, Error Handling, Data Transformation</td>
+                                <td><strong data-lang-key="skill3-cat">ETL Development</strong></td>
+                                <td data-lang-key="skill3-tech">Node.js, REST API Integration, Error Handling, Data Transformation</td>
                             </tr>
                             <tr>
-                                <td><strong>Data Analysis</strong></td>
-                                <td>Time Series Analysis, Cohort Analysis, ROI Calculation, Statistical Metrics</td>
+                                <td><strong data-lang-key="skill4-cat">Data Analysis</strong></td>
+                                <td data-lang-key="skill4-tech">Time Series Analysis, Cohort Analysis, ROI Calculation, Statistical Metrics</td>
                             </tr>
                             <tr>
-                                <td><strong>Automation</strong></td>
-                                <td>Cron Jobs, Scheduled Tasks, Retry Logic, Rate Limiting</td>
+                                <td><strong data-lang-key="skill5-cat">Automation</strong></td>
+                                <td data-lang-key="skill5-tech">Cron Jobs, Scheduled Tasks, Retry Logic, Rate Limiting</td>
                             </tr>
                             <tr>
-                                <td><strong>Visualization</strong></td>
-                                <td>Chart.js, HTML/CSS, Dashboard Design, Data Storytelling</td>
+                                <td><strong data-lang-key="skill6-cat">Visualization</strong></td>
+                                <td data-lang-key="skill6-tech">Chart.js, HTML/CSS, Dashboard Design, Data Storytelling</td>
                             </tr>
                         </tbody>
                     </table>
